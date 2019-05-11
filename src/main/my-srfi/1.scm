@@ -27,6 +27,7 @@
         eighth
         ninth
         tenth
+        car+cdr
         take
         drop
         take-right)
@@ -178,6 +179,10 @@
         (define tenth
             (lambda (xs)
                 (ninth (cdr xs))))
+
+        (define car+cdr
+            (lambda (xs)
+                (values (car xs) (cdr xs))))
 
         (define take
             (lambda (xs n)

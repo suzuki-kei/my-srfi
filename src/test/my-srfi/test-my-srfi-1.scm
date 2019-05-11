@@ -25,6 +25,7 @@
         (test-eighth)
         (test-ninth)
         (test-tenth)
+        (test-car+cdr)
         (test-take)
         (test-drop)
         (test-take-right)))
@@ -262,6 +263,17 @@
         (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 11)))
         (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9 . 10)))
         (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 . 11)))
+        (test-end)))
+
+(define test-car+cdr
+    (lambda ()
+        (test-start "car+cdr")
+        (receive (head rest) (car+cdr '(1))
+            (test* "car+cdr" 1 head)
+            (test* "car+cdr" '() rest))
+        (receive (head rest) (car+cdr '(1 2 3))
+            (test* "car+cdr" 1 head)
+            (test* "car+cdr" '(2 3) rest))
         (test-end)))
 
 (define test-take
