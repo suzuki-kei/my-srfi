@@ -9,6 +9,7 @@
         (my-srfi internals))
 
     (export
+        list
         reverse
         first
         second
@@ -25,6 +26,10 @@
         take-right)
 
     (begin
+
+        (define list
+            (lambda xs
+                xs))
 
         (define reverse
             (lambda (xs)
