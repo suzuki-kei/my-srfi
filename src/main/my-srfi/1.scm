@@ -12,6 +12,7 @@
         list
         xcons
         cons*
+        make-list
         reverse
         first
         second
@@ -48,6 +49,28 @@
                             (apply
                                 cons*
                                 (cons (car xs) (cdr xs))))))))
+
+        (define make-list
+            (lambda (n . arguments)
+                (define make-list
+                    (lambda (xs n x)
+                        (cond
+                            ((= n 0)
+                                xs)
+                            (else
+                                (make-list
+                                    (cons x xs)
+                                    (- n 1)
+                                    x)))))
+                (define x
+                    (if
+                        (null? arguments)
+                        #f
+                        (car arguments)))
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (make-list '() n x)))
 
         (define reverse
             (lambda (xs)

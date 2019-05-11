@@ -10,6 +10,7 @@
         (test-list)
         (test-xcons)
         (test-cons*)
+        (test-make-list)
         (test-reverse)
         (test-first)
         (test-second)
@@ -50,6 +51,19 @@
         (test* "cons*" '(1 . 2) (cons* 1 2))
         (test* "cons*" '(1 2 . 3) (cons* 1 2 3))
         (test* "cons*" '(1 2 3) (cons* 1 2 3 '()))
+        (test-end)))
+
+(define test-make-list
+    (lambda ()
+        (test-start "make-list")
+        (test* "make-list" '() (make-list 0))
+        (test* "make-list" '(#f) (make-list 1))
+        (test* "make-list" '(#f #f) (make-list 2))
+        (test* "make-list" '(#f #f #f) (make-list 3))
+        (test* "make-list" '() (make-list 0 'a))
+        (test* "make-list" '(a) (make-list 1 'a))
+        (test* "make-list" '(a a) (make-list 2 'a))
+        (test* "make-list" '(a a a) (make-list 3 'a))
         (test-end)))
 
 (define test-reverse
