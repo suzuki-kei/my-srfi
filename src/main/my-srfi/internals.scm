@@ -9,6 +9,7 @@
 
     (export
         precondition
+        nth
         nth-or-default)
 
     (begin
@@ -20,6 +21,17 @@
                         #t)
                     (else
                         (error description)))))
+
+        (define nth
+            (lambda (xs n)
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (cond
+                    ((= n 0)
+                        (car xs))
+                    (else
+                        (nth (cdr xs) (- n 1))))))
 
         (define nth-or-default
             (lambda (xs n default)
