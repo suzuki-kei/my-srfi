@@ -16,7 +16,8 @@
         (test-seventh)
         (test-eighth)
         (test-ninth)
-        (test-tenth)))
+        (test-tenth)
+        (test-take)))
 
 (define test-first
     (lambda ()
@@ -160,5 +161,19 @@
         (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 11)))
         (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9 . 10)))
         (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 . 11)))
+        (test-end)))
+
+(define test-take
+    (lambda ()
+        (test-start "take")
+        (test* "take" (test-error <error>) (take '() -1))
+        (test* "take" '() (take '() 0))
+        (test* "take" (test-error <error>) (take '() 1))
+        (test* "take" (test-error <error>) (take '(1 2 3) -1))
+        (test* "take" '() (take '(1 2 3) 0))
+        (test* "take" '(1) (take '(1 2 3) 1))
+        (test* "take" '(1 2) (take '(1 2 3) 2))
+        (test* "take" '(1 2 3) (take '(1 2 3) 3))
+        (test* "take" (test-error <error>) (take '(1 2 3) 4))
         (test-end)))
 

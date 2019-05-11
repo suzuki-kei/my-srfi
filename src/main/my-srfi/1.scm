@@ -5,7 +5,8 @@
 (define-library (my-srfi 1)
 
     (import
-        (scheme base))
+        (scheme base)
+        (my-srfi internals))
 
     (export
         first
@@ -17,7 +18,8 @@
         seventh
         eighth
         ninth
-        tenth)
+        tenth
+        take)
 
     (begin
 
@@ -60,6 +62,19 @@
         (define tenth
             (lambda (xs)
                 (ninth (cdr xs))))
+
+        (define take
+            (lambda (xs n)
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (cond
+                    ((= n 0)
+                        '())
+                    (else
+                        (cons
+                            (car xs)
+                            (take (cdr xs) (- n 1)))))))
 
         'OK))
 
