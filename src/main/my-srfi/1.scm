@@ -10,6 +10,7 @@
 
     (export
         list
+        xcons
         reverse
         first
         second
@@ -30,6 +31,10 @@
         (define list
             (lambda xs
                 xs))
+
+        (define xcons
+            (lambda (xs x)
+                (cons x xs)))
 
         (define reverse
             (lambda (xs)
