@@ -7,6 +7,7 @@
 
 (define test-my-srfi-1
     (lambda ()
+        (test-reverse)
         (test-first)
         (test-second)
         (test-third)
@@ -19,6 +20,16 @@
         (test-tenth)
         (test-take)
         (test-drop)))
+
+(define test-reverse
+    (lambda ()
+        (test-start "reverse")
+        (test* "reverse" '() (reverse '()))
+        (test* "reverse" '(1) (reverse '(1)))
+        (test* "reverse" '(2 1) (reverse '(1 2)))
+        (test* "reverse" '(3 2 1) (reverse '(1 2 3)))
+        (test* "reverse" '((e (f)) d (b c) a) (reverse '(a (b c) d (e (f)))))
+        (test-end)))
 
 (define test-first
     (lambda ()

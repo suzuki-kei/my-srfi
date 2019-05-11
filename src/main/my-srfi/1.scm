@@ -9,6 +9,7 @@
         (my-srfi internals))
 
     (export
+        reverse
         first
         second
         third
@@ -23,6 +24,19 @@
         drop)
 
     (begin
+
+        (define reverse
+            (lambda (xs)
+                (define reverse
+                    (lambda (xs reversed)
+                        (cond
+                            ((null? xs)
+                                reversed)
+                            (else
+                                (reverse
+                                    (cdr xs)
+                                    (cons (car xs) reversed))))))
+                (reverse xs '())))
 
         (define first
             (lambda (xs)
