@@ -9,7 +9,8 @@
 
     (export
         first
-        second)
+        second
+        third)
 
     (begin
 
@@ -20,6 +21,10 @@
         (define second
             (lambda (xs)
                 (first (cdr xs))))
+
+        (define third
+            (lambda (xs)
+                (second (cdr xs))))
 
         'OK))
 

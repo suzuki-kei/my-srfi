@@ -8,7 +8,8 @@
 (define test-my-srfi-1
     (lambda ()
         (test-first)
-        (test-second)))
+        (test-second)
+        (test-third)))
 
 (define test-first
     (lambda ()
@@ -29,5 +30,17 @@
         (test* "second" 2 (second '(1 2 3)))
         (test* "second" (test-error <error>) (second '(1 . 2)))
         (test* "second" 2 (second '(1 2 . 3)))
+        (test-end)))
+
+(define test-third
+    (lambda ()
+        (test-start "third")
+        (test* "third" (test-error <error>) (third '()))
+        (test* "third" (test-error <error>) (third '(1)))
+        (test* "third" (test-error <error>) (third '(1 2)))
+        (test* "third" 3 (third '(1 2 3)))
+        (test* "third" 3 (third '(1 2 3 4)))
+        (test* "third" (test-error <error>) (third '(1 2 . 3)))
+        (test* "third" 3 (third '(1 2 3 . 4)))
         (test-end)))
 
