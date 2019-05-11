@@ -15,7 +15,8 @@
         (test-sixth)
         (test-seventh)
         (test-eighth)
-        (test-ninth)))
+        (test-ninth)
+        (test-tenth)))
 
 (define test-first
     (lambda ()
@@ -140,5 +141,24 @@
         (test* "ninth" 9 (ninth '(1 2 3 4 5 6 7 8 9)))
         (test* "ninth" (test-error <error>) (ninth '(1 2 3 4 5 6 7 8 . 9)))
         (test* "ninth" 9 (ninth '(1 2 3 4 5 6 7 8 9 . 10)))
+        (test-end)))
+
+(define test-tenth
+    (lambda ()
+        (test-start "tenth")
+        (test* "tenth" (test-error <error>) (tenth '()))
+        (test* "tenth" (test-error <error>) (tenth '(1)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9)))
+        (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10)))
+        (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 11)))
+        (test* "tenth" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9 . 10)))
+        (test* "tenth" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 . 11)))
         (test-end)))
 
