@@ -57,6 +57,7 @@
 (define test-make-list
     (lambda ()
         (test-start "make-list")
+        (test* "make-list" (test-error <error>) (make-list -1))
         (test* "make-list" '() (make-list 0))
         (test* "make-list" '(#f) (make-list 1))
         (test* "make-list" '(#f #f) (make-list 2))
