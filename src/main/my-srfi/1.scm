@@ -11,6 +11,7 @@
     (export
         list
         xcons
+        cons*
         reverse
         first
         second
@@ -35,6 +36,18 @@
         (define xcons
             (lambda (xs x)
                 (cons x xs)))
+
+        (define cons*
+            (lambda (x . xs)
+                (cond
+                    ((null? xs)
+                        x)
+                    (else
+                        (cons
+                            x
+                            (apply
+                                cons*
+                                (cons (car xs) (cdr xs))))))))
 
         (define reverse
             (lambda (xs)

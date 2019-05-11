@@ -9,6 +9,7 @@
     (lambda ()
         (test-list)
         (test-xcons)
+        (test-cons*)
         (test-reverse)
         (test-first)
         (test-second)
@@ -39,6 +40,16 @@
         (test* "xcons" '(1) (xcons '() 1))
         (test* "xcons" '(1 2) (xcons '(2) 1))
         (test* "xcons" '(1 2 3) (xcons '(2 3) 1))
+        (test-end)))
+
+(define test-cons*
+    (lambda ()
+        (test-start "cons*")
+        (test* "cons*" (test-error <error>) (cons*))
+        (test* "cons*" 1 (cons* 1))
+        (test* "cons*" '(1 . 2) (cons* 1 2))
+        (test* "cons*" '(1 2 . 3) (cons* 1 2 3))
+        (test* "cons*" '(1 2 3) (cons* 1 2 3 '()))
         (test-end)))
 
 (define test-reverse
