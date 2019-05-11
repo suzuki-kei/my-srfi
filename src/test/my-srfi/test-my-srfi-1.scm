@@ -9,7 +9,8 @@
     (lambda ()
         (test-first)
         (test-second)
-        (test-third)))
+        (test-third)
+        (test-fourth)))
 
 (define test-first
     (lambda ()
@@ -42,5 +43,18 @@
         (test* "third" 3 (third '(1 2 3 4)))
         (test* "third" (test-error <error>) (third '(1 2 . 3)))
         (test* "third" 3 (third '(1 2 3 . 4)))
+        (test-end)))
+
+(define test-fourth
+    (lambda ()
+        (test-start "fourth")
+        (test* "fourth" (test-error <error>) (fourth '()))
+        (test* "fourth" (test-error <error>) (fourth '(1)))
+        (test* "fourth" (test-error <error>) (fourth '(1 2)))
+        (test* "fourth" (test-error <error>) (fourth '(1 2 3)))
+        (test* "fourth" 4 (fourth '(1 2 3 4)))
+        (test* "fourth" 4 (fourth '(1 2 3 4 5)))
+        (test* "fourth" (test-error <error>) (fourth '(1 2 3 . 4)))
+        (test* "fourth" 4 (fourth '(1 2 3 4 . 5)))
         (test-end)))
 
