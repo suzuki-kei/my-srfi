@@ -21,7 +21,8 @@
         ninth
         tenth
         take
-        drop)
+        drop
+        take-right)
 
     (begin
 
@@ -101,6 +102,13 @@
                         xs)
                     (else
                         (drop (cdr xs) (- n 1))))))
+
+        (define take-right
+            (lambda (xs n)
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (reverse (take (reverse xs) n))))
 
         'OK))
 

@@ -19,7 +19,8 @@
         (test-ninth)
         (test-tenth)
         (test-take)
-        (test-drop)))
+        (test-drop)
+        (test-take-right)))
 
 (define test-reverse
     (lambda ()
@@ -201,5 +202,18 @@
         (test* "drop" '(3) (drop '(1 2 3) 2))
         (test* "drop" '() (drop '(1 2 3) 3))
         (test* "drop" (test-error <error>) (drop '(1 2 3) 4))
+        (test-end)))
+
+(define test-take-right
+    (lambda ()
+        (test-start "take-right")
+        (test* "take-right" (test-error <error>) (take-right '() -1))
+        (test* "take-right" '() (take-right '() 0))
+        (test* "take-right" (test-error <error>) (take-right '() 1))
+        (test* "take-right" '() (take-right '(1 2 3) 0))
+        (test* "take-right" '(3) (take-right '(1 2 3) 1))
+        (test* "take-right" '(2 3) (take-right '(1 2 3) 2))
+        (test* "take-right" '(1 2 3) (take-right '(1 2 3) 3))
+        (test* "take-right" (test-error <error>) (take-right '(1 2 3) 4))
         (test-end)))
 
