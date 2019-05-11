@@ -15,6 +15,7 @@
         make-list
         list-tabulate
         list-copy
+        iota
         reverse
         first
         second
@@ -106,6 +107,24 @@
                         (cons
                             (car xs)
                             (list-copy (cdr xs)))))))
+
+        (define iota
+            (lambda (count . optionals)
+                (define iota
+                    (lambda (xs count start step)
+                        (cond
+                            ((= count 0)
+                                xs)
+                            (else
+                                (iota
+                                    (cons start xs)
+                                    (- count 1)
+                                    (+ start step)
+                                    step)))))
+                (let ((start (nth-or-default optionals 0 0))
+                      (step (nth-or-default optionals 1 1)))
+                    (reverse
+                        (iota '() count start step)))))
 
         (define reverse
             (lambda (xs)
