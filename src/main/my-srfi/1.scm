@@ -68,15 +68,13 @@
                                     (cons x xs)
                                     (- n 1)
                                     x)))))
-                (define x
-                    (if
-                        (null? arguments)
-                        #f
-                        (car arguments)))
                 (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
-                (make-list '() n x)))
+                (make-list
+                    '()
+                    n
+                    (internals:nth-or-default arguments 0 #f))))
 
         (define list-tabulate
             (lambda (n init-proc)
