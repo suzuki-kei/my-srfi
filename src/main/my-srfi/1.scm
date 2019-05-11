@@ -31,7 +31,8 @@
         take
         drop
         take-right
-        drop-right)
+        drop-right
+        split-at)
 
     (begin
 
@@ -222,6 +223,15 @@
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (reverse (drop (reverse xs) n))))
+
+        (define split-at
+            (lambda (xs i)
+                (internals:precondition
+                    (>= i 0)
+                    "`i` must be greater than or equals to 0")
+                (values
+                    (take xs i)
+                    (drop xs i))))
 
         'OK))
 

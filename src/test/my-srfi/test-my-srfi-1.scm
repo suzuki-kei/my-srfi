@@ -29,7 +29,8 @@
         (test-take)
         (test-drop)
         (test-take-right)
-        (test-drop-right)))
+        (test-drop-right)
+        (test-split-at)))
 
 (define test-list
     (lambda ()
@@ -328,5 +329,34 @@
         (test* "drop-right" '(1) (drop-right '(1 2 3) 2))
         (test* "drop-right" '() (drop-right '(1 2 3) 3))
         (test* "drop-right" (test-error <error>) (drop-right '(1 2 3) 4))
+        (test-end)))
+
+(define test-split-at
+    (lambda ()
+        (test-start "split-at")
+        (test* "split-at when empty list passed #1"
+            (test-error <error>)
+            (receive xs (split-at '() -1) xs))
+        (test* "split-at when empty list passed #2"
+            '(() ())
+            (receive xs (split-at '() 0) xs))
+        (test* "split-at when non empty list passed #1"
+            (test-error <error>)
+            (receive xs (split-at '(1 2 3) -1) xs))
+        (test* "split-at when non empty list passed #2"
+            '(() (1 2 3))
+            (receive xs (split-at '(1 2 3) 0) xs))
+        (test* "split-at when non empty list passed #3"
+            '((1) (2 3))
+            (receive xs (split-at '(1 2 3) 1) xs))
+        (test* "split-at when non empty list passed #4"
+            '((1 2) (3))
+            (receive xs (split-at '(1 2 3) 2) xs))
+        (test* "split-at when non empty list passed #5"
+            '((1 2 3) ())
+            (receive xs (split-at '(1 2 3) 3) xs))
+        (test* "split-at when non empty list passed #6"
+            (test-error <error>)
+            (receive xs (split-at '(1 2 3) 4) xs))
         (test-end)))
 
