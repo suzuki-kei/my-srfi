@@ -131,15 +131,15 @@
         (define reverse
             (lambda (xs)
                 (define reverse
-                    (lambda (xs reversed)
+                    (lambda (reversed xs)
                         (cond
                             ((null? xs)
                                 reversed)
                             (else
                                 (reverse
-                                    (cdr xs)
-                                    (cons (car xs) reversed))))))
-                (reverse xs '())))
+                                    (cons (car xs) reversed)
+                                    (cdr xs))))))
+                (reverse '() xs)))
 
         (define first
             (lambda (xs)
