@@ -57,7 +57,7 @@
                                 (cons (car xs) (cdr xs))))))))
 
         (define make-list
-            (lambda (n . arguments)
+            (lambda (n . optionals)
                 (define make-list
                     (lambda (xs n x)
                         (cond
@@ -74,7 +74,7 @@
                 (make-list
                     '()
                     n
-                    (internals:nth-or-default arguments 0 #f))))
+                    (internals:nth-or-default optionals 0 #f))))
 
         (define list-tabulate
             (lambda (n init-proc)
