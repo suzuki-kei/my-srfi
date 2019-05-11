@@ -6,7 +6,7 @@
 
     (import
         (scheme base)
-        (my-srfi internals))
+        (prefix (my-srfi internals) internals:))
 
     (export
         list
@@ -70,7 +70,7 @@
                         (null? arguments)
                         #f
                         (car arguments)))
-                (precondition
+                (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (make-list '() n x)))
@@ -88,7 +88,7 @@
                                     (+ i 1)
                                     (- n 1)
                                     init-proc)))))
-                (precondition
+                (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (reverse
@@ -121,8 +121,8 @@
                                     (- count 1)
                                     (+ start step)
                                     step)))))
-                (let ((start (nth-or-default optionals 0 0))
-                      (step (nth-or-default optionals 1 1)))
+                (let ((start (internals:nth-or-default optionals 0 0))
+                      (step (internals:nth-or-default optionals 1 1)))
                     (reverse
                         (iota '() count start step)))))
 
@@ -181,7 +181,7 @@
 
         (define take
             (lambda (xs n)
-                (precondition
+                (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (cond
@@ -194,7 +194,7 @@
 
         (define drop
             (lambda (xs n)
-                (precondition
+                (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (cond
@@ -205,7 +205,7 @@
 
         (define take-right
             (lambda (xs n)
-                (precondition
+                (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (reverse (take (reverse xs) n))))
