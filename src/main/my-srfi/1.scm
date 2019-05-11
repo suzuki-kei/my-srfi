@@ -12,7 +12,8 @@
         second
         third
         fourth
-        fifth)
+        fifth
+        sixth)
 
     (begin
 
@@ -35,6 +36,10 @@
         (define fifth
             (lambda (xs)
                 (fourth (cdr xs))))
+
+        (define sixth
+            (lambda (xs)
+                (fifth (cdr xs))))
 
         'OK))
 
