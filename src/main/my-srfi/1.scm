@@ -15,7 +15,8 @@
         fifth
         sixth
         seventh
-        eighth)
+        eighth
+        ninth)
 
     (begin
 
@@ -50,6 +51,10 @@
         (define eighth
             (lambda (xs)
                 (seventh (cdr xs))))
+
+        (define ninth
+            (lambda (xs)
+                (eighth (cdr xs))))
 
         'OK))
 
