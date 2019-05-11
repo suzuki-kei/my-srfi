@@ -11,6 +11,7 @@
         (test-xcons)
         (test-cons*)
         (test-make-list)
+        (test-list-tabulate)
         (test-reverse)
         (test-first)
         (test-second)
@@ -64,6 +65,16 @@
         (test* "make-list" '(a) (make-list 1 'a))
         (test* "make-list" '(a a) (make-list 2 'a))
         (test* "make-list" '(a a a) (make-list 3 'a))
+        (test-end)))
+
+(define test-list-tabulate
+    (lambda ()
+        (test-start "list-tabulate")
+        (test* "list-tabulate" (test-error <error>) (list-tabulate -1 values))
+        (test* "list-tabulate" '() (list-tabulate 0 values))
+        (test* "list-tabulate" '(0) (list-tabulate 1 values))
+        (test* "list-tabulate" '(0 1) (list-tabulate 2 values))
+        (test* "list-tabulate" '(0 1 2) (list-tabulate 3 values))
         (test-end)))
 
 (define test-reverse

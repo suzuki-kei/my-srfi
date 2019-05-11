@@ -13,6 +13,7 @@
         xcons
         cons*
         make-list
+        list-tabulate
         reverse
         first
         second
@@ -71,6 +72,29 @@
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (make-list '() n x)))
+
+        (define list-tabulate
+            (lambda (n init-proc)
+                (define list-tabulate
+                    (lambda (xs i n init-proc)
+                        (cond
+                            ((= n 0)
+                                xs)
+                            (else
+                                (list-tabulate
+                                    (cons (init-proc i) xs)
+                                    (+ i 1)
+                                    (- n 1)
+                                    init-proc)))))
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (reverse
+                    (list-tabulate
+                        '()
+                        0
+                        n
+                        init-proc))))
 
         (define reverse
             (lambda (xs)
