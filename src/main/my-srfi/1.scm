@@ -8,13 +8,18 @@
         (scheme base))
 
     (export
-        first)
+        first
+        second)
 
     (begin
 
         (define first
             (lambda (xs)
                 (car xs)))
+
+        (define second
+            (lambda (xs)
+                (first (cdr xs))))
 
         'OK))
 
