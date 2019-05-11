@@ -17,7 +17,8 @@
         (test-eighth)
         (test-ninth)
         (test-tenth)
-        (test-take)))
+        (test-take)
+        (test-drop)))
 
 (define test-first
     (lambda ()
@@ -175,5 +176,19 @@
         (test* "take" '(1 2) (take '(1 2 3) 2))
         (test* "take" '(1 2 3) (take '(1 2 3) 3))
         (test* "take" (test-error <error>) (take '(1 2 3) 4))
+        (test-end)))
+
+(define test-drop
+    (lambda ()
+        (test-start "drop")
+        (test* "drop" (test-error <error>) (drop '() -1))
+        (test* "drop" '() (drop '() 0))
+        (test* "drop" (test-error <error>) (drop '() 1))
+        (test* "drop" (test-error <error>) (drop '(1 2 3) -1))
+        (test* "drop" '(1 2 3) (drop '(1 2 3) 0))
+        (test* "drop" '(2 3) (drop '(1 2 3) 1))
+        (test* "drop" '(3) (drop '(1 2 3) 2))
+        (test* "drop" '() (drop '(1 2 3) 3))
+        (test* "drop" (test-error <error>) (drop '(1 2 3) 4))
         (test-end)))
 

@@ -19,7 +19,8 @@
         eighth
         ninth
         tenth
-        take)
+        take
+        drop)
 
     (begin
 
@@ -75,6 +76,17 @@
                         (cons
                             (car xs)
                             (take (cdr xs) (- n 1)))))))
+
+        (define drop
+            (lambda (xs n)
+                (precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (cond
+                    ((= n 0)
+                        xs)
+                    (else
+                        (drop (cdr xs) (- n 1))))))
 
         'OK))
 
