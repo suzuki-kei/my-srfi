@@ -30,7 +30,8 @@
         car+cdr
         take
         drop
-        take-right)
+        take-right
+        drop-right)
 
     (begin
 
@@ -214,6 +215,13 @@
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (reverse (take (reverse xs) n))))
+
+        (define drop-right
+            (lambda (xs n)
+                (internals:precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (reverse (drop (reverse xs) n))))
 
         'OK))
 

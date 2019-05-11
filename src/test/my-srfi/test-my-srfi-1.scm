@@ -28,7 +28,8 @@
         (test-car+cdr)
         (test-take)
         (test-drop)
-        (test-take-right)))
+        (test-take-right)
+        (test-drop-right)))
 
 (define test-list
     (lambda ()
@@ -315,5 +316,17 @@
         (test* "take-right" '(2 3) (take-right '(1 2 3) 2))
         (test* "take-right" '(1 2 3) (take-right '(1 2 3) 3))
         (test* "take-right" (test-error <error>) (take-right '(1 2 3) 4))
+        (test-end)))
+
+(define test-drop-right
+    (lambda ()
+        (test-start "drop-right")
+        (test* "drop-right" (test-error <error>) (drop-right '() -1))
+        (test* "drop-right" '() (drop-right '() 0))
+        (test* "drop-right" '(1 2 3) (drop-right '(1 2 3) 0))
+        (test* "drop-right" '(1 2) (drop-right '(1 2 3) 1))
+        (test* "drop-right" '(1) (drop-right '(1 2 3) 2))
+        (test* "drop-right" '() (drop-right '(1 2 3) 3))
+        (test* "drop-right" (test-error <error>) (drop-right '(1 2 3) 4))
         (test-end)))
 
