@@ -12,6 +12,7 @@
         (test-cons*)
         (test-make-list)
         (test-list-tabulate)
+        (test-list-copy)
         (test-reverse)
         (test-first)
         (test-second)
@@ -76,6 +77,15 @@
         (test* "list-tabulate" '(0) (list-tabulate 1 values))
         (test* "list-tabulate" '(0 1) (list-tabulate 2 values))
         (test* "list-tabulate" '(0 1 2) (list-tabulate 3 values))
+        (test-end)))
+
+(define test-list-copy
+    (lambda ()
+        (test-start "list-copy")
+        (test* "list-copy" '() (list-copy '()))
+        (test* "list-copy" '(1) (list-copy '(1)))
+        (test* "list-copy" '(1 2) (list-copy '(1 2)))
+        (test* "list-copy" '(1 2 3) (list-copy '(1 2 3)))
         (test-end)))
 
 (define test-reverse

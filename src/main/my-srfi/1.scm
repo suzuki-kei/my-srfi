@@ -14,6 +14,7 @@
         cons*
         make-list
         list-tabulate
+        list-copy
         reverse
         first
         second
@@ -95,6 +96,16 @@
                         0
                         n
                         init-proc))))
+
+        (define list-copy
+            (lambda (xs)
+                (cond
+                    ((null? xs)
+                        '())
+                    (else
+                        (cons
+                            (car xs)
+                            (list-copy (cdr xs)))))))
 
         (define reverse
             (lambda (xs)
