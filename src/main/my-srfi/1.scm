@@ -33,7 +33,8 @@
         take-right
         drop-right
         split-at
-        last)
+        last
+        last-pair)
 
     (begin
 
@@ -240,6 +241,17 @@
                         (car xs))
                     (else
                         (last (cdr xs))))))
+
+        (define last-pair
+            (lambda (xs)
+                (internals:precondition
+                    (not (null? xs))
+                    "`xs` must not be empty")
+                (cond
+                    ((null? (cdr xs))
+                        xs)
+                    (else
+                        (last-pair (cdr xs))))))
 
         'OK))
 
