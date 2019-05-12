@@ -16,6 +16,7 @@
         list-tabulate
         list-copy
         iota
+        list-ref
         first
         second
         third
@@ -130,6 +131,13 @@
                       (step (internals:nth-or-default optionals 1 1)))
                     (reverse
                         (iota '() count start step)))))
+
+        (define list-ref
+            (lambda (xs i)
+                (internals:precondition
+                    (>= i 0)
+                    "`i` must be greater than or equals to 0")
+                (car (drop xs i))))
 
         (define first
             (lambda (xs)

@@ -14,6 +14,7 @@
         (test-list-tabulate)
         (test-list-copy)
         (test-iota)
+        (test-list-ref)
         (test-first)
         (test-second)
         (test-third)
@@ -180,6 +181,26 @@
         (test* "iota when `step` is negative #4"
             '(0 -1 -2)
             (iota 3 0 -1))
+        (test-end)))
+
+(define test-list-ref
+    (lambda ()
+        (test-start "list-ref")
+        (test* "list-ref when empty list passed #1"
+            (test-error <error>)
+            (list-ref '() 0))
+        (test* "list-ref when non empty list passed #1"
+            0
+            (list-ref '(0 1 2) 0))
+        (test* "list-ref when non empty list passed #2"
+            1
+            (list-ref '(0 1 2) 1))
+        (test* "list-ref when non empty list passed #3"
+            2
+            (list-ref '(0 1 2) 2))
+        (test* "list-ref when non empty list passed #4"
+            (test-error <error>)
+            (list-ref '(0 1 2) 3))
         (test-end)))
 
 (define test-first
