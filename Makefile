@@ -7,7 +7,6 @@ test: \
 	test-srfi-1
 
 test-internals:
-
 	${GOSH} ${TEST_DIR}/my-srfi/test-my-srfi-internals.scm
 
 test-srfi-1:
