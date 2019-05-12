@@ -33,6 +33,7 @@
         drop
         take-right
         drop-right
+        take!
         split-at
         last
         last-pair
@@ -227,6 +228,20 @@
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
                 (reverse (drop (reverse xs) n))))
+
+        (define take!
+            (lambda (xs n)
+                (internals:precondition
+                    (>= n 0)
+                    "`n` must be greater than or equals to 0")
+                (cond
+                    ((= n 0)
+                        (set! xs '()))
+                    (else
+                        (set-cdr!
+                            (drop xs (- n 1))
+                            '())))
+                xs))
 
         (define split-at
             (lambda (xs i)

@@ -31,6 +31,7 @@
         (test-drop)
         (test-take-right)
         (test-drop-right)
+        (test-take!)
         (test-split-at)
         (test-last)
         (test-last-pair)
@@ -549,6 +550,38 @@
         (test* "drop-right when non empty list passed #5"
             (test-error <error>)
             (drop-right '(1 2 3) 4))
+        (test-end)))
+
+(define test-take!
+    (lambda ()
+        (test-start "take!")
+        (test* "take! when empty list passed #1"
+            (test-error <error>)
+            (take! '() -1))
+        (test* "take! when empty list passed #2"
+            '()
+            (take! '() 0))
+        (test* "take! when empty list passed #3"
+            (test-error <error>)
+            (take! '() 1))
+        (test* "take! when non empty list passed #1"
+            (test-error <error>)
+            (take! '(1 2 3) -1))
+        (test* "take! when non empty list passed #2"
+            '()
+            (take! '(1 2 3) 0))
+        (test* "take! when non empty list passed #3"
+            '(1)
+            (take! '(1 2 3) 1))
+        (test* "take! when non empty list passed #4"
+            '(1 2)
+            (take! '(1 2 3) 2))
+        (test* "take! when non empty list passed #5"
+            '(1 2 3)
+            (take! '(1 2 3) 3))
+        (test* "take! when non empty list passed #6"
+            (test-error <error>)
+            (take! '(1 2 3) 4))
         (test-end)))
 
 (define test-split-at
