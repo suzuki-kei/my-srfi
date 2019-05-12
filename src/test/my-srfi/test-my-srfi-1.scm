@@ -608,7 +608,7 @@
 (define test-append
     (lambda ()
         (test-start "append")
-        (test* "append when non list passed #1"
+        (test* "append when no list passed #1"
             '()
             (append))
         (test* "append when empty list only passed #1"
