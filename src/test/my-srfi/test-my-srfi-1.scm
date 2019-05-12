@@ -30,7 +30,8 @@
         (test-drop)
         (test-take-right)
         (test-drop-right)
-        (test-split-at)))
+        (test-split-at)
+        (test-last)))
 
 (define test-list
     (lambda ()
@@ -556,5 +557,22 @@
         (test* "split-at when non empty list passed #6"
             (test-error <error>)
             (receive xs (split-at '(1 2 3) 4) xs))
+        (test-end)))
+
+(define test-last
+    (lambda ()
+        (test-start "last")
+        (test* "last when empty list passed #1"
+            (test-error <error>)
+            (last '()))
+        (test* "last when non empty list passed #1"
+            1
+            (last '(1)))
+        (test* "last when non empty list passed #2"
+            2
+            (last '(1 2)))
+        (test* "last when non empty list passed #3"
+            3
+            (last '(1 2 3)))
         (test-end)))
 

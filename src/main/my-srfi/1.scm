@@ -32,7 +32,8 @@
         drop
         take-right
         drop-right
-        split-at)
+        split-at
+        last)
 
     (begin
 
@@ -228,6 +229,17 @@
                 (values
                     (take xs i)
                     (drop xs i))))
+
+        (define last
+            (lambda (xs)
+                (internals:precondition
+                    (not (null? xs))
+                    "`xs` must not be empty")
+                (cond
+                    ((null? (cdr xs))
+                        (car xs))
+                    (else
+                        (last (cdr xs))))))
 
         'OK))
 
