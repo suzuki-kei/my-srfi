@@ -199,145 +199,198 @@
 (define test-first
     (lambda ()
         (test-start "first")
-        (test* "first #1" (test-error <error>) (first '()))
-        (test* "first #2" 1 (first '(1)))
-        (test* "first #3" 1 (first '(1 2)))
-        (test* "first #4" 1 (first '(1 2 3)))
-        (test* "first #5" 1 (first '(1 . 2)))
+        (test* "first when empty list passed #1"
+            (test-error <error>)
+            (first '()))
+        (test* "first when non empty list passed #1"
+            1
+            (first '(1)))
+        (test* "first when non empty list passed #2"
+            1
+            (first '(1 2)))
+        (test* "first when dotted list passed #1"
+            1
+            (first '(1 . 2)))
         (test-end)))
 
 (define test-second
     (lambda ()
         (test-start "second")
-        (test* "second #1" (test-error <error>) (second '()))
-        (test* "second #2" (test-error <error>) (second '(1)))
-        (test* "second #3" 2 (second '(1 2)))
-        (test* "second #4" 2 (second '(1 2 3)))
-        (test* "second #5" (test-error <error>) (second '(1 . 2)))
-        (test* "second #6" 2 (second '(1 2 . 3)))
+        (test* "second when empty list passed #1"
+            (test-error <error>)
+            (second '()))
+        (test* "second when non empty list passed #1"
+            (test-error <error>)
+            (second '(1)))
+        (test* "second when non empty list passed #2"
+            2
+            (second '(1 2)))
+        (test* "second when non empty list passed #3"
+            2
+            (second '(1 2 3)))
+        (test* "second when dotted list passed #1"
+            2
+            (second '(1 2 . 3)))
         (test-end)))
 
 (define test-third
     (lambda ()
         (test-start "third")
-        (test* "third #1" (test-error <error>) (third '()))
-        (test* "third #2" (test-error <error>) (third '(1)))
-        (test* "third #3" (test-error <error>) (third '(1 2)))
-        (test* "third #4" 3 (third '(1 2 3)))
-        (test* "third #5" 3 (third '(1 2 3 4)))
-        (test* "third #6" (test-error <error>) (third '(1 2 . 3)))
-        (test* "third #7" 3 (third '(1 2 3 . 4)))
+        (test* "third when empty list passed #1"
+            (test-error <error>)
+            (third '()))
+        (test* "third when non empty list passed #1"
+            (test-error <error>)
+            (third '(1 2)))
+        (test* "third when non empty list passed #2"
+            3
+            (third '(1 2 3)))
+        (test* "third when non empty list passed #3"
+            3
+            (third '(1 2 3 4)))
+        (test* "third when dotted list passed #1"
+            3
+            (third '(1 2 3 . 4)))
         (test-end)))
 
 (define test-fourth
     (lambda ()
         (test-start "fourth")
-        (test* "fourth #1" (test-error <error>) (fourth '()))
-        (test* "fourth #2" (test-error <error>) (fourth '(1)))
-        (test* "fourth #3" (test-error <error>) (fourth '(1 2)))
-        (test* "fourth #4" (test-error <error>) (fourth '(1 2 3)))
-        (test* "fourth #5" 4 (fourth '(1 2 3 4)))
-        (test* "fourth #6" 4 (fourth '(1 2 3 4 5)))
-        (test* "fourth #7" (test-error <error>) (fourth '(1 2 3 . 4)))
-        (test* "fourth #8" 4 (fourth '(1 2 3 4 . 5)))
+        (test* "fourth when empty list passed #1"
+            (test-error <error>)
+            (fourth '()))
+        (test* "fourth when non empty list passed #1"
+            (test-error <error>)
+            (fourth '(1 2 3)))
+        (test* "fourth when non empty list passed #2"
+            4
+            (fourth '(1 2 3 4)))
+        (test* "fourth when non empty list passed #3"
+            4
+            (fourth '(1 2 3 4 5)))
+        (test* "fourth when dotted list passed #1"
+            4
+            (fourth '(1 2 3 4 . 5)))
         (test-end)))
 
 (define test-fifth
     (lambda ()
         (test-start "fifth")
-        (test* "fifth #1" (test-error <error>) (fifth '()))
-        (test* "fifth #2" (test-error <error>) (fifth '(1)))
-        (test* "fifth #3" (test-error <error>) (fifth '(1 2)))
-        (test* "fifth #4" (test-error <error>) (fifth '(1 2 3)))
-        (test* "fifth #5" (test-error <error>) (fifth '(1 2 3 4)))
-        (test* "fifth #6" 5 (fifth '(1 2 3 4 5)))
-        (test* "fifth #7" 5 (fifth '(1 2 3 4 5 6)))
-        (test* "fifth #8" (test-error <error>) (fifth '(1 2 3 4 . 5)))
-        (test* "fifth #9" 5 (fifth '(1 2 3 4 5 6)))
+        (test* "fifth when empty list passed #1"
+            (test-error <error>)
+            (fifth '()))
+        (test* "fifth when non empty list passed #1"
+            (test-error <error>)
+            (fifth '(1 2 3 4)))
+        (test* "fifth when non empty list passed #2"
+            5
+            (fifth '(1 2 3 4 5)))
+        (test* "fifth when non empty list passed #3"
+            5
+            (fifth '(1 2 3 4 5 6)))
+        (test* "fifth when dotted list passed #1"
+            5
+            (fifth '(1 2 3 4 5 . 6)))
         (test-end)))
 
 (define test-sixth
     (lambda ()
         (test-start "sixth")
-        (test* "sixth #1" (test-error <error>) (sixth '()))
-        (test* "sixth #2" (test-error <error>) (sixth '(1)))
-        (test* "sixth #3" (test-error <error>) (sixth '(1 2)))
-        (test* "sixth #4" (test-error <error>) (sixth '(1 2 3)))
-        (test* "sixth #5" (test-error <error>) (sixth '(1 2 3 4)))
-        (test* "sixth #6" (test-error <error>) (sixth '(1 2 3 4 5)))
-        (test* "sixth #7" 6 (sixth '(1 2 3 4 5 6)))
-        (test* "sixth #8" 6 (sixth '(1 2 3 4 5 6 7)))
-        (test* "sixth #9" (test-error <error>) (sixth '(1 2 3 4 5 . 6)))
-        (test* "sixth #10" 6 (sixth '(1 2 3 4 5 6 . 7)))
+        (test* "sixth when empty list passed #1"
+            (test-error <error>)
+            (sixth '()))
+        (test* "sixth when non empty list passed #1"
+            (test-error <error>)
+            (sixth '(1 2 3 4 5)))
+        (test* "sixth when non empty list passed #2"
+            6
+            (sixth '(1 2 3 4 5 6)))
+        (test* "sixth when non empty list passed #3"
+            6
+            (sixth '(1 2 3 4 5 6 7)))
+        (test* "sixth when dotted list passed #1"
+            6
+            (sixth '(1 2 3 4 5 6 . 7)))
         (test-end)))
 
 (define test-seventh
     (lambda ()
         (test-start "seventh")
-        (test* "seventh #1" (test-error <error>) (seventh '()))
-        (test* "seventh #2" (test-error <error>) (seventh '(1)))
-        (test* "seventh #3" (test-error <error>) (seventh '(1 2)))
-        (test* "seventh #4" (test-error <error>) (seventh '(1 2 3)))
-        (test* "seventh #5" (test-error <error>) (seventh '(1 2 3 4)))
-        (test* "seventh #6" (test-error <error>) (seventh '(1 2 3 4 5)))
-        (test* "seventh #7" (test-error <error>) (seventh '(1 2 3 4 5 6)))
-        (test* "seventh #8" 7 (seventh '(1 2 3 4 5 6 7)))
-        (test* "seventh #9" 7 (seventh '(1 2 3 4 5 6 7 8)))
-        (test* "seventh #10" (test-error <error>) (seventh '(1 2 3 4 5 6 . 7)))
-        (test* "seventh #11" 7 (seventh '(1 2 3 4 5 6 7 . 8)))
+        (test* "seventh when empty list passed #1"
+            (test-error <error>)
+            (seventh '()))
+        (test* "seventh when non empty list passed #1"
+            (test-error <error>)
+            (seventh '(1 2 3 4 5 6)))
+        (test* "seventh when non empty list passed #2"
+            7
+            (seventh '(1 2 3 4 5 6 7)))
+        (test* "seventh when non empty list passed #3"
+            7
+            (seventh '(1 2 3 4 5 6 7 8)))
+        (test* "seventh when dotted list passed #1"
+            7
+            (seventh '(1 2 3 4 5 6 7 . 8)))
         (test-end)))
 
 (define test-eighth
     (lambda ()
         (test-start "eighth")
-        (test* "eighth #1" (test-error <error>) (eighth '()))
-        (test* "eighth #2" (test-error <error>) (eighth '(1)))
-        (test* "eighth #3" (test-error <error>) (eighth '(1 2)))
-        (test* "eighth #4" (test-error <error>) (eighth '(1 2 3)))
-        (test* "eighth #5" (test-error <error>) (eighth '(1 2 3 4)))
-        (test* "eighth #6" (test-error <error>) (eighth '(1 2 3 4 5)))
-        (test* "eighth #7" (test-error <error>) (eighth '(1 2 3 4 5 6)))
-        (test* "eighth #8" (test-error <error>) (eighth '(1 2 3 4 5 6 7)))
-        (test* "eighth #9" 8 (eighth '(1 2 3 4 5 6 7 8)))
-        (test* "eighth #10" 8 (eighth '(1 2 3 4 5 6 7 8 9)))
-        (test* "eighth #11" (test-error <error>) (eighth '(1 2 3 4 5 6 7 . 8)))
-        (test* "eighth #12" 8 (eighth '(1 2 3 4 5 6 7 8 . 9)))
+        (test* "eighth when empty list passed #1"
+            (test-error <error>)
+            (eighth '()))
+        (test* "eighth when non empty list passed #1"
+            (test-error <error>)
+            (eighth '(1 2 3 4 5 6 7)))
+        (test* "eighth when non empty list passed #2"
+            8
+            (eighth '(1 2 3 4 5 6 7 8)))
+        (test* "eighth when non empty list passed #3"
+            8
+            (eighth '(1 2 3 4 5 6 7 8 9)))
+        (test* "eighth when dotted list passed #1"
+            8
+            (eighth '(1 2 3 4 5 6 7 8 . 9)))
         (test-end)))
 
 (define test-ninth
     (lambda ()
         (test-start "ninth")
-        (test* "ninth #1" (test-error <error>) (ninth '()))
-        (test* "ninth #2" (test-error <error>) (ninth '(1)))
-        (test* "ninth #3" (test-error <error>) (ninth '(1 2)))
-        (test* "ninth #4" (test-error <error>) (ninth '(1 2 3)))
-        (test* "ninth #5" (test-error <error>) (ninth '(1 2 3 4)))
-        (test* "ninth #6" (test-error <error>) (ninth '(1 2 3 4 5)))
-        (test* "ninth #7" (test-error <error>) (ninth '(1 2 3 4 5 6)))
-        (test* "ninth #8" (test-error <error>) (ninth '(1 2 3 4 5 6 7)))
-        (test* "ninth #9" (test-error <error>) (ninth '(1 2 3 4 5 6 7 8)))
-        (test* "ninth #10" 9 (ninth '(1 2 3 4 5 6 7 8 9)))
-        (test* "ninth #11" (test-error <error>) (ninth '(1 2 3 4 5 6 7 8 . 9)))
-        (test* "ninth #12" 9 (ninth '(1 2 3 4 5 6 7 8 9 . 10)))
+        (test* "ninth when empty list passed #1"
+            (test-error <error>)
+            (ninth '()))
+        (test* "ninth when non empty list passed #1"
+            (test-error <error>)
+            (ninth '(1 2 3 4 5 6 7 8)))
+        (test* "ninth when non empty list passed #2"
+            9
+            (ninth '(1 2 3 4 5 6 7 8 9)))
+        (test* "ninth when non empty list passed #3"
+            9
+            (ninth '(1 2 3 4 5 6 7 8 9 10)))
+        (test* "ninth when dotted list passed #1"
+            9
+            (ninth '(1 2 3 4 5 6 7 8 9 . 10)))
         (test-end)))
 
 (define test-tenth
     (lambda ()
         (test-start "tenth")
-        (test* "tenth #1" (test-error <error>) (tenth '()))
-        (test* "tenth #2" (test-error <error>) (tenth '(1)))
-        (test* "tenth #3" (test-error <error>) (tenth '(1 2)))
-        (test* "tenth #4" (test-error <error>) (tenth '(1 2 3)))
-        (test* "tenth #5" (test-error <error>) (tenth '(1 2 3 4)))
-        (test* "tenth #6" (test-error <error>) (tenth '(1 2 3 4 5)))
-        (test* "tenth #7" (test-error <error>) (tenth '(1 2 3 4 5 6)))
-        (test* "tenth #8" (test-error <error>) (tenth '(1 2 3 4 5 6 7)))
-        (test* "tenth #9" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8)))
-        (test* "tenth #10" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9)))
-        (test* "tenth #11" 10 (tenth '(1 2 3 4 5 6 7 8 9 10)))
-        (test* "tenth #12" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 11)))
-        (test* "tenth #13" (test-error <error>) (tenth '(1 2 3 4 5 6 7 8 9 . 10)))
-        (test* "tenth #14" 10 (tenth '(1 2 3 4 5 6 7 8 9 10 . 11)))
+        (test* "tenth when empty list passed #1"
+            (test-error <error>)
+            (tenth '()))
+        (test* "tenth when non empty list passed #1"
+            (test-error <error>)
+            (tenth '(1 2 3 4 5 6 7 8 9)))
+        (test* "tenth when non empty list passed #2"
+            10
+            (tenth '(1 2 3 4 5 6 7 8 9 10)))
+        (test* "tenth when non empty list passed #3"
+            10
+            (tenth '(1 2 3 4 5 6 7 8 9 10 11)))
+        (test* "tenth when dotted list passed #1"
+            10
+            (tenth '(1 2 3 4 5 6 7 8 9 10 . 11)))
         (test-end)))
 
 (define test-car+cdr
