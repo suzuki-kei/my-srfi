@@ -37,7 +37,8 @@
         length
         append
         concatenate
-        reverse)
+        reverse
+        append-reverse)
 
     (begin
 
@@ -286,6 +287,12 @@
                                     (cons (car xs) reversed)
                                     (cdr xs))))))
                 (reverse '() xs)))
+
+        (define append-reverse
+            (lambda (xs ys)
+                (append
+                    (reverse xs)
+                    ys)))
 
         'OK))
 

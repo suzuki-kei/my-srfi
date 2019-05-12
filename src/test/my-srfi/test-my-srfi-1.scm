@@ -35,7 +35,8 @@
         (test-length)
         (test-append)
         (test-concatenate)
-        (test-reverse)))
+        (test-reverse)
+        (test-append-reverse)))
 
 (define test-list
     (lambda ()
@@ -698,5 +699,22 @@
         (test* "reverse when nested list passed #1"
             '((e (f)) d (b c) a)
             (reverse '(a (b c) d (e (f)))))
+        (test-end)))
+
+(define test-append-reverse
+    (lambda ()
+        (test-start "append-reverse")
+        (test* "append-reverse #1"
+            '()
+            (append-reverse '() '()))
+        (test* "append-reverse #2"
+            '(a b c)
+            (append-reverse '() '(a b c)))
+        (test* "append-reverse #3"
+            '(3 2 1)
+            (append-reverse '(1 2 3) '()))
+        (test* "append-reverse #4"
+            '(3 2 1 a b c)
+            (append-reverse '(1 2 3) '(a b c)))
         (test-end)))
 
