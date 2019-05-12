@@ -71,10 +71,8 @@
                 (internals:precondition
                     (>= n 0)
                     "`n` must be greater than or equals to 0")
-                (make-list
-                    '()
-                    n
-                    (internals:nth-or-default optionals 0 #f))))
+                (let ((fill-value (internals:nth-or-default optionals 0 #f)))
+                    (make-list '() n fill-value))))
 
         (define list-tabulate
             (lambda (n init-proc)
