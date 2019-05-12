@@ -1,5 +1,5 @@
 ;;
-;; List Library
+;; SRFI-1 List Library
 ;;
 
 (define-library (my-srfi 1)
