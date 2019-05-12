@@ -33,7 +33,8 @@
         (test-split-at)
         (test-last)
         (test-last-pair)
-        (test-length)))
+        (test-length)
+        (test-append)))
 
 (define test-list
     (lambda ()
@@ -602,5 +603,52 @@
         (test* "length #2" 1 (length '(1)))
         (test* "length #3" 2 (length '(1 2)))
         (test* "length #4" 3 (length '(1 2 3)))
+        (test-end)))
+
+(define test-append
+    (lambda ()
+        (test-start "append")
+        (test* "append when non list passed #1"
+            '()
+            (append))
+        (test* "append when empty list only passed #1"
+            '()
+            (append '()))
+        (test* "append when empty list only passed #2"
+            '()
+            (append '() '()))
+        (test* "append when empty list only passed #3"
+            '()
+            (append '() '() '()))
+        (test* "append when non empty list only passed #1"
+            '(1)
+            (append '(1)))
+        (test* "append when non empty list only passed #2"
+            '(1 2 3)
+            (append '(1) '(2 3)))
+        (test* "append when non empty list only passed #3"
+            '(1 2 3)
+            (append '(1 2) '(3)))
+        (test* "append when non empty list only passed #4"
+            '(1 2 3 4 5 6)
+            (append '(1) '(2 3) '(4 5 6)))
+        (test* "append when non empty list only passed #5"
+            '(1 2 3 4 5 6)
+            (append '(1 2 3) '(4) '(5 6)))
+        (test* "append when both empty list and non empty list passed #1"
+            '(1)
+            (append '() '(1)))
+        (test* "append when both empty list and non empty list passed #2"
+            '(1)
+            (append '(1) '()))
+        (test* "append when both empty list and non empty list passed #3"
+            '(1)
+            (append '() '() '(1)))
+        (test* "append when both empty list and non empty list passed #4"
+            '(1)
+            (append '() '(1) '()))
+        (test* "append when both empty list and non empty list passed #5"
+            '(1)
+            (append '(1) '() '()))
         (test-end)))
 

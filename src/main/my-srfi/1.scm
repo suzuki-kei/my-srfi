@@ -35,7 +35,8 @@
         split-at
         last
         last-pair
-        length)
+        length
+        append)
 
     (begin
 
@@ -264,6 +265,22 @@
                             (else
                                 (length (+ count 1) (cdr xs))))))
                 (length 0 xs)))
+
+        (define append
+            (lambda lists
+                (cond
+                    ((null? lists)
+                        '())
+                    ((null? (car lists))
+                        (apply append
+                            (cdr lists)))
+                    (else
+                        (cons
+                            (caar lists)
+                            (apply append
+                                (cons
+                                    (cdar lists)
+                                    (cdr lists))))))))
 
         'OK))
 
