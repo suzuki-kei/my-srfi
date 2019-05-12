@@ -13,6 +13,7 @@
         (test-make-list)
         (test-list-tabulate)
         (test-list-copy)
+        (test-circular-list)
         (test-iota)
         (test-list-ref)
         (test-first)
@@ -128,6 +129,20 @@
         (test* "list-copy #2" '(1) (list-copy '(1)))
         (test* "list-copy #3" '(1 2) (list-copy '(1 2)))
         (test* "list-copy #4" '(1 2 3) (list-copy '(1 2 3)))
+        (test-end)))
+
+(define test-circular-list
+    (lambda ()
+        (test-start "circular-list")
+        (test* "circular-list #1"
+            '(1 1)
+            (take (circular-list 1) 2))
+        (test* "circular-list #2"
+            '(1 2 1 2)
+            (take (circular-list 1 2) 4))
+        (test* "circular-list #3"
+            '(1 2 3 1 2 3)
+            (take (circular-list 1 2 3) 6))
         (test-end)))
 
 (define test-iota

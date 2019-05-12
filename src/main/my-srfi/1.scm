@@ -15,6 +15,7 @@
         make-list
         list-tabulate
         list-copy
+        circular-list
         iota
         list-ref
         first
@@ -113,6 +114,12 @@
                         (cons
                             (car xs)
                             (list-copy (cdr xs)))))))
+
+        (define circular-list
+            (lambda (x . xs)
+                (let ((ys (cons x xs)))
+                    (set-cdr! (last-pair ys) ys)
+                    ys)))
 
         (define iota
             (lambda (count . optionals)
