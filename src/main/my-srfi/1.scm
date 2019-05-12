@@ -34,7 +34,8 @@
         drop-right
         split-at
         last
-        last-pair)
+        last-pair
+        length)
 
     (begin
 
@@ -252,6 +253,17 @@
                         xs)
                     (else
                         (last-pair (cdr xs))))))
+
+        (define length
+            (lambda (xs)
+                (define length
+                    (lambda (count xs)
+                        (cond
+                            ((null? xs)
+                                count)
+                            (else
+                                (length (+ count 1) (cdr xs))))))
+                (length 0 xs)))
 
         'OK))
 

@@ -32,7 +32,8 @@
         (test-drop-right)
         (test-split-at)
         (test-last)
-        (test-last-pair)))
+        (test-last-pair)
+        (test-length)))
 
 (define test-list
     (lambda ()
@@ -592,5 +593,14 @@
         (test* "last-pair when non empty list passed #3"
             '(3)
             (last-pair '(1 2 3)))
+        (test-end)))
+
+(define test-length
+    (lambda ()
+        (test-start "length")
+        (test* "length #1" 0 (length '()))
+        (test* "length #2" 1 (length '(1)))
+        (test* "length #3" 2 (length '(1 2)))
+        (test* "length #4" 3 (length '(1 2 3)))
         (test-end)))
 
