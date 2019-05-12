@@ -34,7 +34,8 @@
         (test-last)
         (test-last-pair)
         (test-length)
-        (test-append)))
+        (test-append)
+        (test-concatenate)))
 
 (define test-list
     (lambda ()
@@ -650,5 +651,52 @@
         (test* "append when both empty list and non empty list passed #5"
             '(1)
             (append '(1) '() '()))
+        (test-end)))
+
+(define test-concatenate
+    (lambda ()
+        (test-start "concatenate")
+        (test* "concatenate when empty list only passed #1"
+            '()
+            (concatenate '()))
+        (test* "concatenate when empty list only passed #2"
+            '()
+            (concatenate '(())))
+        (test* "concatenate when empty list only passed #3"
+            '()
+            (concatenate '(() ())))
+        (test* "concatenate when empty list only passed #4"
+            '()
+            (concatenate '(() () ())))
+        (test* "concatenate when non empty list only passed #1"
+            '(1)
+            (concatenate '((1))))
+        (test* "concatenate when non empty list only passed #2"
+            '(1 2 3)
+            (concatenate '((1) (2 3))))
+        (test* "concatenate when non empty list only passed #3"
+            '(1 2 3)
+            (concatenate '((1 2) (3))))
+        (test* "concatenate when non empty list only passed #4"
+            '(1 2 3 4 5 6)
+            (concatenate '((1) (2 3) (4 5 6))))
+        (test* "concatenate when non empty list only passed #5"
+            '(1 2 3 4 5 6)
+            (concatenate '((1 2 3) (4) (5 6))))
+        (test* "concatenate when both empty list and non empty list passed #1"
+            '(1)
+            (concatenate '(() (1))))
+        (test* "concatenate when both empty list and non empty list passed #2"
+            '(1)
+            (concatenate '((1) ())))
+        (test* "concatenate when both empty list and non empty list passed #3"
+            '(1)
+            (concatenate '(() () (1))))
+        (test* "concatenate when both empty list and non empty list passed #4"
+            '(1)
+            (concatenate '(() (1) ())))
+        (test* "concatenate when both empty list and non empty list passed #5"
+            '(1)
+            (concatenate '((1) () ())))
         (test-end)))
 

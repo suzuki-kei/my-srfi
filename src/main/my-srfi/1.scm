@@ -36,7 +36,8 @@
         last
         last-pair
         length
-        append)
+        append
+        concatenate)
 
     (begin
 
@@ -281,6 +282,10 @@
                                 (cons
                                     (cdar lists)
                                     (cdr lists))))))))
+
+        (define concatenate
+            (lambda (lists)
+                (apply append lists)))
 
         'OK))
 
