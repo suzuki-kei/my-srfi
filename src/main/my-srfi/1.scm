@@ -16,7 +16,6 @@
         list-tabulate
         list-copy
         iota
-        reverse
         first
         second
         third
@@ -37,7 +36,8 @@
         last-pair
         length
         append
-        concatenate)
+        concatenate
+        reverse)
 
     (begin
 
@@ -129,19 +129,6 @@
                       (step (internals:nth-or-default optionals 1 1)))
                     (reverse
                         (iota '() count start step)))))
-
-        (define reverse
-            (lambda (xs)
-                (define reverse
-                    (lambda (reversed xs)
-                        (cond
-                            ((null? xs)
-                                reversed)
-                            (else
-                                (reverse
-                                    (cons (car xs) reversed)
-                                    (cdr xs))))))
-                (reverse '() xs)))
 
         (define first
             (lambda (xs)
@@ -286,6 +273,19 @@
         (define concatenate
             (lambda (lists)
                 (apply append lists)))
+
+        (define reverse
+            (lambda (xs)
+                (define reverse
+                    (lambda (reversed xs)
+                        (cond
+                            ((null? xs)
+                                reversed)
+                            (else
+                                (reverse
+                                    (cons (car xs) reversed)
+                                    (cdr xs))))))
+                (reverse '() xs)))
 
         'OK))
 

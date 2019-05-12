@@ -14,7 +14,6 @@
         (test-list-tabulate)
         (test-list-copy)
         (test-iota)
-        (test-reverse)
         (test-first)
         (test-second)
         (test-third)
@@ -35,7 +34,8 @@
         (test-last-pair)
         (test-length)
         (test-append)
-        (test-concatenate)))
+        (test-concatenate)
+        (test-reverse)))
 
 (define test-list
     (lambda ()
@@ -179,26 +179,6 @@
         (test* "iota when `step` is negative #4"
             '(0 -1 -2)
             (iota 3 0 -1))
-        (test-end)))
-
-(define test-reverse
-    (lambda ()
-        (test-start "reverse")
-        (test* "reverse when empty list passed #1"
-            '()
-            (reverse '()))
-        (test* "reverse when non empty list passed #1"
-            '(1)
-            (reverse '(1)))
-        (test* "reverse when non empty list passed #2"
-            '(2 1)
-            (reverse '(1 2)))
-        (test* "reverse when non empty list passed #3"
-            '(3 2 1)
-            (reverse '(1 2 3)))
-        (test* "reverse when nested list passed #1"
-            '((e (f)) d (b c) a)
-            (reverse '(a (b c) d (e (f)))))
         (test-end)))
 
 (define test-first
@@ -698,5 +678,25 @@
         (test* "concatenate when both empty list and non empty list passed #5"
             '(1)
             (concatenate '((1) () ())))
+        (test-end)))
+
+(define test-reverse
+    (lambda ()
+        (test-start "reverse")
+        (test* "reverse when empty list passed #1"
+            '()
+            (reverse '()))
+        (test* "reverse when non empty list passed #1"
+            '(1)
+            (reverse '(1)))
+        (test* "reverse when non empty list passed #2"
+            '(2 1)
+            (reverse '(1 2)))
+        (test* "reverse when non empty list passed #3"
+            '(3 2 1)
+            (reverse '(1 2 3)))
+        (test* "reverse when nested list passed #1"
+            '((e (f)) d (b c) a)
+            (reverse '(a (b c) d (e (f)))))
         (test-end)))
 
