@@ -43,7 +43,8 @@
         reverse
         append-reverse
         filter
-        partition)
+        partition
+        remove)
 
     (begin
 
@@ -367,6 +368,25 @@
                                     predicate
                                     (cdr xs))))))
                 (partition '() '() predicate xs)))
+
+        (define remove
+            (lambda (predicate xs)
+                (define remove
+                    (lambda (removed-values predicate xs)
+                        (cond
+                            ((null? xs)
+                                (reverse removed-values))
+                            ((predicate (car xs))
+                                (remove
+                                    removed-values
+                                    predicate
+                                    (cdr xs)))
+                            (else
+                                (remove
+                                    (cons (car xs) removed-values)
+                                    predicate
+                                    (cdr xs))))))
+                (remove '() predicate xs)))
 
         'OK))
 

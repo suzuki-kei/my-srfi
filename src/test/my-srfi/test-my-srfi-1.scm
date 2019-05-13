@@ -41,7 +41,8 @@
         (test-reverse)
         (test-append-reverse)
         (test-filter)
-        (test-partition)))
+        (test-partition)
+        (test-remove)))
 
 (define test-list
     (lambda ()
@@ -823,5 +824,16 @@
         (test* "partition when non empty list passed #1"
             '((1 3 5) (2 4))
             (receive xs (partition odd? '(1 2 3 4 5)) xs))
+        (test-end)))
+
+(define test-remove
+    (lambda ()
+        (test-start "remove")
+        (test* "remove when empty list passed #1"
+            '()
+            (remove odd? '()))
+        (test* "remove when non empty list passed #1"
+            '(2 4)
+            (remove odd? '(1 2 3 4 5)))
         (test-end)))
 
