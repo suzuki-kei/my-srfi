@@ -40,7 +40,8 @@
         (test-concatenate)
         (test-reverse)
         (test-append-reverse)
-        (test-filter)))
+        (test-filter)
+        (test-partition)))
 
 (define test-list
     (lambda ()
@@ -811,5 +812,16 @@
         (test* "filter when non empty list passed #3"
             '(2 4)
             (filter even? '(1 2 3 4 5)))
+        (test-end)))
+
+(define test-partition
+    (lambda ()
+        (test-start "partition")
+        (test* "partition when empty list passed #1"
+            '(() ())
+            (receive xs (partition odd? '()) xs))
+        (test* "partition when non empty list passed #1"
+            '((1 3 5) (2 4))
+            (receive xs (partition odd? '(1 2 3 4 5)) xs))
         (test-end)))
 

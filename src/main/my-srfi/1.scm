@@ -42,7 +42,8 @@
         concatenate
         reverse
         append-reverse
-        filter)
+        filter
+        partition)
 
     (begin
 
@@ -336,6 +337,29 @@
                             (filter predicate (cdr xs))))
                     (else
                         (filter predicate (cdr xs))))))
+
+        (define partition
+            (lambda (predicate xs)
+                (define partition
+                    (lambda (matched-values unmatched-values predicate xs)
+                        (cond
+                            ((null? xs)
+                                (values
+                                    (reverse matched-values)
+                                    (reverse unmatched-values)))
+                            ((predicate (car xs))
+                                (partition
+                                    (cons (car xs) matched-values)
+                                    unmatched-values
+                                    predicate
+                                    (cdr xs)))
+                            (else
+                                (partition
+                                    matched-values
+                                    (cons (car xs) unmatched-values)
+                                    predicate
+                                    (cdr xs))))))
+                (partition '() '() predicate xs)))
 
         'OK))
 
