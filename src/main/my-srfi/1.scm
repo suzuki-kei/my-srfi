@@ -328,15 +328,22 @@
 
         (define filter
             (lambda (predicate xs)
-                (cond
-                    ((null? xs)
-                        '())
-                    ((predicate (car xs))
-                        (cons
-                            (car xs)
-                            (filter predicate (cdr xs))))
-                    (else
-                        (filter predicate (cdr xs))))))
+                (define filter
+                    (lambda (filtered-values predicate xs)
+                        (cond
+                            ((null? xs)
+                                (reverse filtered-values))
+                            ((predicate (car xs))
+                                (filter
+                                    (cons (car xs) filtered-values)
+                                    predicate
+                                    (cdr xs)))
+                            (else
+                                (filter
+                                    filtered-values
+                                    predicate
+                                    (cdr xs))))))
+                (filter '() predicate xs)))
 
         (define partition
             (lambda (predicate xs)
