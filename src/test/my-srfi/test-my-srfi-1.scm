@@ -39,7 +39,8 @@
         (test-append)
         (test-concatenate)
         (test-reverse)
-        (test-append-reverse)))
+        (test-append-reverse)
+        (test-filter)))
 
 (define test-list
     (lambda ()
@@ -785,5 +786,30 @@
         (test* "append-reverse #4"
             '(3 2 1 a b c)
             (append-reverse '(1 2 3) '(a b c)))
+        (test-end)))
+
+(define test-filter
+    (lambda ()
+        (define true (lambda _ #t))
+        (define false (lambda _ #f))
+        (test-start "filter")
+        (test* "filter when empty list passed #1"
+            '()
+            (filter true '()))
+        (test* "filter when empty list passed #2"
+            '()
+            (filter false '()))
+        (test* "filter when non empty list passed #1"
+            '(1 2 3 4 5)
+            (filter true '(1 2 3 4 5)))
+        (test* "filter when non empty list passed #2"
+            '()
+            (filter false '(1 2 3 4 5)))
+        (test* "filter when non empty list passed #3"
+            '(1 3 5)
+            (filter odd? '(1 2 3 4 5)))
+        (test* "filter when non empty list passed #3"
+            '(2 4)
+            (filter even? '(1 2 3 4 5)))
         (test-end)))
 

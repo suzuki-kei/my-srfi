@@ -41,7 +41,8 @@
         append
         concatenate
         reverse
-        append-reverse)
+        append-reverse
+        filter)
 
     (begin
 
@@ -323,6 +324,18 @@
                 (append
                     (reverse xs)
                     ys)))
+
+        (define filter
+            (lambda (predicate xs)
+                (cond
+                    ((null? xs)
+                        '())
+                    ((predicate (car xs))
+                        (cons
+                            (car xs)
+                            (filter predicate (cdr xs))))
+                    (else
+                        (filter predicate (cdr xs))))))
 
         'OK))
 
