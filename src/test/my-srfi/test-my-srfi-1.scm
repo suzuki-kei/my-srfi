@@ -841,15 +841,35 @@
 (define test-any
     (lambda ()
         (test-start "any")
-        (test* "any will not called #1" #f (any odd? '()))
-        (test* "any will not called #2" #f (any odd? '() '()))
-        (test* "any will not called #3" #f (any odd? '() '() '()))
-        (test* "any will called #1" #f (any odd? '(0 2 4)))
-        (test* "any will called #2" #t (any even? '(0 2 4)))
-        (test* "any will called #3" #f (any = '(0 2 4) '(1 3 5)))
-        (test* "any will called #4" #f (any = '(0 0 0) '(1 2 3)))
-        (test* "any will called #5" #t (any = '(1 0 0) '(1 2 3)))
-        (test* "any will called #6" #t (any = '(0 2 0) '(1 2 3)))
-        (test* "any will called #7" #t (any = '(0 0 3) '(1 2 3)))
+        (test* "any when predicate will not called #1"
+            #f
+            (any odd? '()))
+        (test* "any when predicate will not called #2"
+            #f
+            (any odd? '() '()))
+        (test* "any when predicate will not called #3"
+            #f
+            (any odd? '() '() '()))
+        (test* "any when predicate will called #1"
+            #f
+            (any odd? '(0 2 4)))
+        (test* "any when predicate will called #2"
+            #t
+            (any even? '(0 2 4)))
+        (test* "any when predicate will called #3"
+            #f
+            (any = '(0 2 4) '(1 3 5)))
+        (test* "any when predicate will called #4"
+            #f
+            (any = '(0 0 0) '(1 2 3)))
+        (test* "any when predicate will called #5"
+            #t
+            (any = '(1 0 0) '(1 2 3)))
+        (test* "any when predicate will called #6"
+            #t
+            (any = '(0 2 0) '(1 2 3)))
+        (test* "any when predicate will called #7"
+            #t
+            (any = '(0 0 3) '(1 2 3)))
         (test-end)))
 
