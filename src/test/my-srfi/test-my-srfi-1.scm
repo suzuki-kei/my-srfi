@@ -43,7 +43,8 @@
         (test-filter)
         (test-partition)
         (test-remove)
-        (test-any)))
+        (test-any)
+        (test-every)))
 
 (define test-list
     (lambda ()
@@ -871,5 +872,40 @@
         (test* "any when predicate will called #7"
             #t
             (any = '(0 0 3) '(1 2 3)))
+        (test-end)))
+
+(define test-every
+    (lambda ()
+        (test-start "every")
+        (test* "every when predicate will not called #1"
+            #t
+            (every odd? '()))
+        (test* "every when predicate will not called #2"
+            #t
+            (every odd? '() '()))
+        (test* "every when predicate will not called #3"
+            #t
+            (every odd? '() '() '()))
+        (test* "every when predicate will called #1"
+            #t
+            (every odd? '(1 3 5)))
+        (test* "every when predicate will called #2"
+            #f
+            (every odd? '(0 2 4)))
+        (test* "every when predicate will called #3"
+            #t
+            (every = '(0 0 0) '(0 0 0)))
+        (test* "every when predicate will called #4"
+            #f
+            (every = '(0 0 0) '(0 0 1)))
+        (test* "every when predicate will called #5"
+            #f
+            (every = '(0 0 0) '(0 1 0)))
+        (test* "every when predicate will called #6"
+            #f
+            (every = '(0 0 0) '(1 0 0)))
+        (test* "every when predicate will called #7"
+            #f
+            (every = '(0 0 0) '(1 1 1)))
         (test-end)))
 

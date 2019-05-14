@@ -45,7 +45,8 @@
         filter
         partition
         remove
-        any)
+        any
+        every)
 
     (begin
 
@@ -401,6 +402,21 @@
                             (else
                                 (any predicate (map cdr arguments-list))))))
                 (any
+                    predicate
+                    (cons first-arguments rest-arguments-list))))
+
+        (define every
+            (lambda (predicate first-arguments . rest-arguments-list)
+                (define every
+                    (lambda (predicate arguments-list)
+                        (cond
+                            ((null? (car arguments-list))
+                                #t)
+                            ((apply predicate (map car arguments-list))
+                                (every predicate (map cdr arguments-list)))
+                            (else
+                                #f))))
+                (every
                     predicate
                     (cons first-arguments rest-arguments-list))))
 
