@@ -44,7 +44,8 @@
         append-reverse
         filter
         partition
-        remove)
+        remove
+        any)
 
     (begin
 
@@ -387,6 +388,21 @@
                                     predicate
                                     (cdr xs))))))
                 (remove '() predicate xs)))
+
+        (define any
+            (lambda (predicate first-arguments . rest-arguments-list)
+                (define any
+                    (lambda (predicate arguments-list)
+                        (cond
+                            ((null? (car arguments-list))
+                                #f)
+                            ((apply predicate (map car arguments-list))
+                                #t)
+                            (else
+                                (any predicate (map cdr arguments-list))))))
+                (any
+                    predicate
+                    (cons first-arguments rest-arguments-list))))
 
         'OK))
 
