@@ -45,6 +45,7 @@
         filter
         partition
         remove
+        filter!
         any
         every)
 
@@ -389,6 +390,22 @@
                                     predicate
                                     (cdr xs))))))
                 (remove '() predicate xs)))
+
+        (define filter!
+            (lambda (predicate xs)
+                (define filter!
+                    (lambda (predicate xs)
+                        (cond
+                            ((null? (cdr xs))
+                                xs)
+                            ((predicate (cadr xs))
+                                (filter! predicate (cdr xs)))
+                            (else
+                                (set-cdr! xs (cddr xs))
+                                (filter! predicate xs)))))
+                (let ((sentinel-with-xs (cons 'sentinel xs)))
+                    (filter! predicate sentinel-with-xs)
+                    (cdr sentinel-with-xs))))
 
         (define any
             (lambda (predicate first-arguments . rest-arguments-list)
