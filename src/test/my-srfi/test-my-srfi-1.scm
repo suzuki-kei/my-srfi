@@ -163,7 +163,7 @@
         (test* "iota when `count` passed only #3"
             '(0 1)
             (iota 2))
-        (test* "iota when `count` passed only #1"
+        (test* "iota when `count` passed only #4"
             '(0 1 2)
             (iota 3))
         (test* "iota when `start` passed #1"
@@ -812,7 +812,7 @@
         (test* "filter when non empty list passed #3"
             '(1 3 5)
             (filter odd? '(1 2 3 4 5)))
-        (test* "filter when non empty list passed #3"
+        (test* "filter when non empty list passed #4"
             '(2 4)
             (filter even? '(1 2 3 4 5)))
         (test-end)))
