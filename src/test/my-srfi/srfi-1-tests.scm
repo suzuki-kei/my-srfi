@@ -62,11 +62,10 @@
 (define test-cons*
     (lambda ()
         (test-start "cons*")
-        (test* "cons* #1" (test-error <error>) (cons*))
-        (test* "cons* #2" 1 (cons* 1))
-        (test* "cons* #3" '(1 . 2) (cons* 1 2))
-        (test* "cons* #4" '(1 2 . 3) (cons* 1 2 3))
-        (test* "cons* #5" '(1 2 3) (cons* 1 2 3 '()))
+        (test* "cons* #1" 1 (cons* 1))
+        (test* "cons* #2" '(1 . 2) (cons* 1 2))
+        (test* "cons* #3" '(1 2 . 3) (cons* 1 2 3))
+        (test* "cons* #4" '(1 2 3) (cons* 1 2 3 '()))
         (test-end)))
 
 (define test-make-list
