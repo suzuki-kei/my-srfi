@@ -5,7 +5,31 @@
 (define-library (my-srfi 1)
 
     (import
-        (scheme base)
+        (only (scheme base)
+            +
+            -
+            =
+            >=
+            apply
+            caar
+            cadr
+            car
+            cdar
+            cddr
+            cdr
+            cond
+            cons
+            define
+            else
+            lambda
+            let
+            map
+            not
+            null?
+            quote
+            set!
+            set-cdr!
+            values)
         (prefix (my-srfi internals) internals:))
 
     (export
