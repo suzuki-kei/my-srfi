@@ -10,6 +10,34 @@
         (test-list-copy)
         (test-circular-list)
         (test-iota)
+        (test-caar)
+        (test-cadr)
+        (test-cdar)
+        (test-cddr)
+        (test-caaar)
+        (test-caadr)
+        (test-cadar)
+        (test-caddr)
+        (test-cdaar)
+        (test-cdadr)
+        (test-cddar)
+        (test-cdddr)
+        (test-caaaar)
+        (test-caaadr)
+        (test-caadar)
+        (test-caaddr)
+        (test-cadaar)
+        (test-cadadr)
+        (test-caddar)
+        (test-cadddr)
+        (test-cdaaar)
+        (test-cdaadr)
+        (test-cdadar)
+        (test-cdaddr)
+        (test-cddaar)
+        (test-cddadr)
+        (test-cdddar)
+        (test-cddddr)
         (test-list-ref)
         (test-first)
         (test-second)
@@ -198,6 +226,175 @@
             '(0 -1 -2)
             (iota 3 0 -1))
         (test-end)))
+
+(define test-caar
+    (lambda ()
+        (test-start "caar")
+        (test* "caar #1" '(caar) (caar '(((caar)))))
+        (test-end)))
+
+(define test-cadr
+    (lambda ()
+        (test-start "cadr")
+        (test* "cadr #1" '(cadr) (cadr '(() (cadr))))
+        (test-end)))
+
+(define test-cdar
+    (lambda ()
+        (test-start "cdar")
+        (test* "cdar #1" '(cdar) (cdar '((() cdar))))
+        (test-end)))
+
+(define test-cddr
+    (lambda ()
+        (test-start "cddr")
+        (test* "cddr #1" '(cddr) (cddr '(() () cddr)))
+        (test-end)))
+
+(define test-caaar
+    (lambda ()
+        (test-start "caaar")
+        (test* "caaar #1" '(caaar) (caaar '((((caaar))))))
+        (test-end)))
+
+(define test-caadr
+    (lambda ()
+        (test-start "caadr")
+        (test* "caadr #1" '(caadr) (caadr '(() ((caadr)))))
+        (test-end)))
+
+(define test-cadar
+    (lambda ()
+        (test-start "cadar")
+        (test* "cadar #1" '(cadar) (cadar '((() (cadar)))))
+        (test-end)))
+
+(define test-caddr
+    (lambda ()
+        (test-start "caddr")
+        (test* "caddr #1" '(caddr) (caddr '(() () (caddr))))
+        (test-end)))
+
+(define test-cdaar
+    (lambda ()
+        (test-start "cdaar")
+        (test* "cdaar #1" '(cdaar) (cdaar '(((() cdaar)))))
+        (test-end)))
+
+(define test-cdadr
+    (lambda ()
+        (test-start "cdadr")
+        (test* "cdadr #1" '(cdadr) (cdadr '(() (() cdadr))))
+        (test-end)))
+
+(define test-cddar
+    (lambda ()
+        (test-start "cddar")
+        (test* "cddar #1" '(cddar) (cddar '((() () cddar))))
+        (test-end)))
+
+(define test-cdddr
+    (lambda ()
+        (test-start "cdddr")
+        (test* "cdddr #1" '(cdddr) (cdddr '(() () () cdddr)))
+        (test-end)))
+
+(define test-caaaar
+    (lambda ()
+        (test-start "caaaar")
+        (test* "caaaar #1" '(caaaar) (caaaar '(((((caaaar)))))))
+        (test-end)))
+
+(define test-caaadr
+    (lambda ()
+        (test-start "caaadr")
+        (test* "caaadr #1" '(caaadr) (caaadr '(() (((caaadr))))))
+        (test-end)))
+
+(define test-caadar
+    (lambda ()
+        (test-start "caadar")
+        (test* "caadar #1" '(caadar) (caadar '((() ((caadar))))))
+        (test-end)))
+
+(define test-caaddr
+    (lambda ()
+        (test-start "caaddr")
+        (test* "caaddr #1" '(caaddr) (caaddr '(() () ((caaddr)))))
+        (test-end)))
+
+(define test-cadaar
+    (lambda ()
+        (test-start "cadaar")
+        (test* "cadaar #1" '(cadaar) (cadaar '(((() (cadaar))))))
+        (test-end)))
+
+(define test-cadadr
+    (lambda ()
+        (test-start "cadadr")
+        (test* "cadadr #1" '(cadadr) (cadadr '(() (() (cadadr)))))
+        (test-end)))
+
+(define test-caddar
+    (lambda ()
+        (test-start "caddar")
+        (test* "caddar #1" '(caddar) (caddar '((() () (caddar)))))
+        (test-end)))
+
+(define test-cadddr
+    (lambda ()
+        (test-start "cadddr")
+        (test* "cadddr #1" '(cadddr) (cadddr '(() () () (cadddr))))
+        (test-end)))
+
+(define test-cdaaar
+    (lambda ()
+        (test-start "cdaaar")
+        (test* "cdaaar #1" '(cdaaar) (cdaaar '((((() cdaaar))))))
+        (test-end)))
+
+(define test-cdaadr
+    (lambda ()
+        (test-start "cdaadr")
+        (test* "cdaadr #1" '(cdaadr) (cdaadr '(() ((() cdaadr)))))
+        (test-end)))
+
+(define test-cdadar
+    (lambda ()
+        (test-start "cdadar")
+        (test* "cdadar #1" '(cdadar) (cdadar '((() (() cdadar)))))
+        (test-end)))
+
+(define test-cdaddr
+    (lambda ()
+        (test-start "cdaddr")
+        (test* "cdaddr #1" '(cdaddr) (cdaddr '(() () (() cdaddr))))
+        (test-end)))
+
+(define test-cddaar
+    (lambda ()
+        (test-start "cddaar")
+        (test* "cddaar #1" '(cddaar) (cddaar '(((() () cddaar)))))
+        (test-end)))
+
+(define test-cddadr
+    (lambda ()
+        (test-start "cddadr")
+        (test* "cddadr #1" '(cddadr) (cddadr '(() (() () cddadr))))
+        (test-end)))
+
+(define test-cdddar
+    (lambda ()
+        (test-start "cdddar")
+        (test* "cdddar #1" '(cdddar) (cdddar '((() () () cdddar))))
+        (test-end)))
+
+(define test-cddddr
+    (lambda ()
+        (test-start "cddddr")
+        (test* "cddddr #1" '(cddddr) (cddddr '(() () () () cddddr)))
+        (test-end)))
+
 
 (define test-list-ref
     (lambda ()
