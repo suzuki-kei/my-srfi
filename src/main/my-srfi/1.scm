@@ -11,11 +11,7 @@
             =
             >=
             apply
-            caar
-            cadr
             car
-            cdar
-            cddr
             cdr
             cond
             cons
