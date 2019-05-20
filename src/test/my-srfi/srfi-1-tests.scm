@@ -10,6 +10,7 @@
         (test-list-copy)
         (test-circular-list)
         (test-iota)
+        (test-proper-list?)
         (test-caar)
         (test-cadr)
         (test-cdar)
@@ -225,6 +226,35 @@
         (test* "iota when `step` is negative #4"
             '(0 -1 -2)
             (iota 3 0 -1))
+        (test-end)))
+
+(define test-proper-list?
+    (lambda ()
+        (test-start "proper-list?")
+        (test* "proper-list? when proper list passed #1"
+            #t
+            (proper-list? '()))
+        (test* "proper-list? when proper list passed #2"
+            #t
+            (proper-list? '(1)))
+        (test* "proper-list? when proper list passed #3"
+            #t
+            (proper-list? '(1 2)))
+        (test* "proper-list? when proper list passed #4"
+            #t
+            (proper-list? '(1 2 3)))
+        (test* "proper-list? when dotted list passed #1"
+            #f
+            (proper-list? '(1 . 2)))
+        (test* "proper-list? when dotted list passed #2"
+            #f
+            (proper-list? '(1 2 . 3)))
+        (test* "proper-list? when non list passed #1"
+            #f
+            (proper-list? 1))
+        (test* "proper-list? when circular list passed #1"
+            #f
+            (proper-list? (circular-list 1)))
         (test-end)))
 
 (define test-caar
