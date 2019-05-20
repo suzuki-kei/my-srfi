@@ -10,6 +10,7 @@
             -
             =
             >=
+            and
             apply
             car
             cdr
@@ -17,11 +18,13 @@
             cons
             define
             else
+            eqv?
             lambda
             let
             map
             not
             null?
+            pair?
             quote
             set!
             set-cdr!
@@ -37,6 +40,7 @@
         list-copy
         circular-list
         iota
+        circular-list?
         caar
         cadr
         cdar
@@ -193,6 +197,27 @@
                       (step (internals:nth-or-default optionals 1 1)))
                     (reverse
                         (iota '() count start step)))))
+
+        (define circular-list?
+            (lambda (xs)
+                (define circular-list?
+                    (lambda (xs ys)
+                        (cond
+                            ((not (pair? ys))
+                                #f)
+                            ((eqv? xs ys)
+                                #t)
+                            ((not (pair? (cdr ys)))
+                                #f)
+                            ((not (pair? (cddr ys)))
+                                #f)
+                            (else
+                                (circular-list?
+                                    (cdr xs)
+                                    (cddr ys))))))
+                (and
+                    (pair? xs)
+                    (circular-list? xs (cdr xs)))))
 
         (define caar
             (lambda (x)
