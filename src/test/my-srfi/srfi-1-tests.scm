@@ -11,6 +11,7 @@
         (test-circular-list)
         (test-iota)
         (test-proper-list?)
+        (test-circular-list?)
         (test-caar)
         (test-cadr)
         (test-cdar)
@@ -255,6 +256,35 @@
         (test* "proper-list? when circular list passed #1"
             #f
             (proper-list? (circular-list 1)))
+        (test-end)))
+
+(define test-circular-list?
+    (lambda ()
+        (test-start "circular-list?")
+        (test* "circular-list? when non list passed #1"
+            #f
+            (circular-list? 1))
+        (test* "circular-list? when proper list passed #1"
+            #f
+            (circular-list? '()))
+        (test* "circular-list? when proper list passed #2"
+            #f
+            (circular-list? '(1)))
+        (test* "circular-list? when proper list passed #3"
+            #f
+            (circular-list? '(1 2)))
+        (test* "circular-list? when proper list passed #4"
+            #f
+            (circular-list? '(1 2 3)))
+        (test* "circular-list? when dotted list passed #1"
+            #f
+            (circular-list? '(1 . 2)))
+        (test* "circular-list? when dotted list passed #2"
+            #f
+            (circular-list? '(1 2 . 3)))
+        (test* "circular-list? when circular list passed #1"
+            #t
+            (circular-list? (circular-list 1)))
         (test-end)))
 
 (define test-caar
