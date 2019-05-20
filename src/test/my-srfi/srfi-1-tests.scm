@@ -231,6 +231,9 @@
 (define test-proper-list?
     (lambda ()
         (test-start "proper-list?")
+        (test* "proper-list? when non list passed #1"
+            #f
+            (proper-list? 1))
         (test* "proper-list? when proper list passed #1"
             #t
             (proper-list? '()))
@@ -249,9 +252,6 @@
         (test* "proper-list? when dotted list passed #2"
             #f
             (proper-list? '(1 2 . 3)))
-        (test* "proper-list? when non list passed #1"
-            #f
-            (proper-list? 1))
         (test* "proper-list? when circular list passed #1"
             #f
             (proper-list? (circular-list 1)))
