@@ -200,24 +200,9 @@
 
         (define circular-list?
             (lambda (xs)
-                (define circular-list?
-                    (lambda (xs ys)
-                        (cond
-                            ((not (pair? ys))
-                                #f)
-                            ((eqv? xs ys)
-                                #t)
-                            ((not (pair? (cdr ys)))
-                                #f)
-                            ((not (pair? (cddr ys)))
-                                #f)
-                            (else
-                                (circular-list?
-                                    (cdr xs)
-                                    (cddr ys))))))
-                (and
-                    (pair? xs)
-                    (circular-list? xs (cdr xs)))))
+                (eqv?
+                    (internals:classify-list xs)
+                    'circular-list)))
 
         (define caar
             (lambda (x)
