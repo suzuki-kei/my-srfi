@@ -24,6 +24,7 @@
             map
             not
             null?
+            or
             pair?
             quote
             set!
@@ -43,6 +44,7 @@
         proper-list?
         circular-list?
         dotted-list?
+        null-list?
         caar
         cadr
         cdar
@@ -217,6 +219,13 @@
                 (eqv?
                     (internals:classify-list xs)
                     'dotted-list)))
+
+        (define null-list?
+            (lambda (xs)
+                (internals:precondition
+                    (or (null? xs) (pair? xs))
+                    "`xs` must be a list")
+                (null? xs)))
 
         (define caar
             (lambda (x)

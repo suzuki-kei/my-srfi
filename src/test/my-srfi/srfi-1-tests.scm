@@ -13,6 +13,7 @@
         (test-proper-list?)
         (test-circular-list?)
         (test-dotted-list?)
+        (test-null-list?)
         (test-caar)
         (test-cadr)
         (test-cdar)
@@ -315,6 +316,35 @@
         (test* "dotted-list? when circular list passed #1"
             #f
             (dotted-list? (circular-list 1)))
+        (test-end)))
+
+(define test-null-list?
+    (lambda ()
+        (test-start "null-list?")
+        (test* "null-list? when non list passed #1"
+            (test-error <error>)
+            (null-list? 1))
+        (test* "null-list? when proper list passed #1"
+            #t
+            (null-list? '()))
+        (test* "null-list? when proper list passed #2"
+            #f
+            (null-list? '(1)))
+        (test* "null-list? when proper list passed #3"
+            #f
+            (null-list? '(1 2)))
+        (test* "null-list? when proper list passed #4"
+            #f
+            (null-list? '(1 2 3)))
+        (test* "null-list? when dotted list passed #1"
+            #f
+            (null-list? '(1 . 2)))
+        (test* "null-list? when dotted list passed #2"
+            #f
+            (null-list? '(1 2 . 3)))
+        (test* "null-list? when circular list passed #1"
+            #f
+            (null-list? (circular-list 1)))
         (test-end)))
 
 (define test-caar
