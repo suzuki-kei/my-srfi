@@ -40,6 +40,7 @@
         list-copy
         circular-list
         iota
+        proper-list?
         circular-list?
         caar
         cadr
@@ -197,6 +198,12 @@
                       (step (internals:nth-or-default optionals 1 1)))
                     (reverse
                         (iota '() count start step)))))
+
+        (define proper-list?
+            (lambda (xs)
+                (eqv?
+                    (internals:classify-list xs)
+                    'proper-list)))
 
         (define circular-list?
             (lambda (xs)
