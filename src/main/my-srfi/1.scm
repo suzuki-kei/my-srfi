@@ -42,6 +42,7 @@
         iota
         proper-list?
         circular-list?
+        dotted-list?
         caar
         cadr
         cdar
@@ -210,6 +211,12 @@
                 (eqv?
                     (internals:classify-list xs)
                     'circular-list)))
+
+        (define dotted-list?
+            (lambda (xs)
+                (eqv?
+                    (internals:classify-list xs)
+                    'dotted-list)))
 
         (define caar
             (lambda (x)
