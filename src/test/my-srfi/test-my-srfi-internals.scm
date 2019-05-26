@@ -1,5 +1,6 @@
 (use my-srfi.internals)
 (use gauche.test)
+(use srfi-1)
 
 (define main
     (lambda (arguments)
@@ -9,7 +10,8 @@
     (lambda ()
         (test-precondition)
         (test-nth)
-        (test-nth-or-default)))
+        (test-nth-or-default)
+        (test-classify-list)))
 
 (define test-precondition
     (lambda ()
@@ -37,5 +39,18 @@
         (test* "nth-or-default" 1 (nth-or-default '(0 1 2) 1 -1))
         (test* "nth-or-default" 2 (nth-or-default '(0 1 2) 2 -1))
         (test* "nth-or-default" -1 (nth-or-default '(0 1 2) 3 -1))
+        (test-end)))
+
+(define test-classify-list
+    (lambda ()
+        (test-start "classify-list")
+        (test* "classify-list #1" 'dotted-list (classify-list 1))
+        (test* "classify-list #2" 'proper-list (classify-list '()))
+        (test* "classify-list #3" 'proper-list (classify-list '(1)))
+        (test* "classify-list #4" 'proper-list (classify-list '(1 2)))
+        (test* "classify-list #5" 'proper-list (classify-list '(1 2 3)))
+        (test* "classify-list #6" 'dotted-list (classify-list '(1 . 2)))
+        (test* "classify-list #7" 'dotted-list (classify-list '(1 2 . 3)))
+        (test* "classify-list #8" 'circular-list (classify-list (circular-list 1)))
         (test-end)))
 

@@ -10,7 +10,8 @@
     (export
         precondition
         nth
-        nth-or-default)
+        nth-or-default
+        classify-list)
 
     (begin
 
@@ -48,6 +49,31 @@
                             (cdr xs)
                             (- n 1)
                             default)))))
+
+        (define classify-list
+            (lambda (xs)
+                (define classify
+                    (lambda (xs ys)
+                        (cond
+                            ((eqv? xs ys)
+                                'circular-list)
+                            ((null? ys)
+                                'proper-list)
+                            ((not (pair? ys))
+                                'dotted-list)
+                            ((null? (cdr ys))
+                                'proper-list)
+                            ((not (pair? (cdr ys)))
+                                'dotted-list)
+                            (else
+                                (classify (cdr xs) (cddr ys))))))
+                (cond
+                    ((null? xs)
+                        'proper-list)
+                    ((not (pair? xs))
+                        'dotted-list)
+                    (else
+                        (classify xs (cdr xs))))))
 
         'OK))
 
