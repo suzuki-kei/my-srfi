@@ -45,6 +45,7 @@
         circular-list?
         dotted-list?
         null-list?
+        not-pair?
         caar
         cadr
         cdar
@@ -226,6 +227,10 @@
                     (or (null? xs) (pair? xs))
                     "`xs` must be a list")
                 (null? xs)))
+
+        (define not-pair?
+            (lambda (x)
+                (not (pair? x))))
 
         (define caar
             (lambda (x)

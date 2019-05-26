@@ -14,6 +14,7 @@
         (test-circular-list?)
         (test-dotted-list?)
         (test-null-list?)
+        (test-not-pair?)
         (test-caar)
         (test-cadr)
         (test-cdar)
@@ -345,6 +346,35 @@
         (test* "null-list? when circular list passed #1"
             #f
             (null-list? (circular-list 1)))
+        (test-end)))
+
+(define test-not-pair?
+    (lambda ()
+        (test-start "not-pair?")
+        (test* "not-pair? when non list passed #1"
+            #t
+            (not-pair? 1))
+        (test* "not-pair? when proper list passed #1"
+            #t
+            (not-pair? '()))
+        (test* "not-pair? when proper list passed #2"
+            #f
+            (not-pair? '(1)))
+        (test* "not-pair? when proper list passed #3"
+            #f
+            (not-pair? '(1 2)))
+        (test* "not-pair? when proper list passed #4"
+            #f
+            (not-pair? '(1 2 3)))
+        (test* "not-pair? when dotted list passed #1"
+            #f
+            (not-pair? '(1 . 2)))
+        (test* "not-pair? when dotted list passed #2"
+            #f
+            (not-pair? '(1 2 . 3)))
+        (test* "not-pair? when circular list passed #1"
+            #f
+            (not-pair? (circular-list 1)))
         (test-end)))
 
 (define test-caar
