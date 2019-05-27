@@ -2,6 +2,9 @@
 GOSH = gosh -I ./src/main -I ./src/test
 TEST_DIR = ./src/test
 
+help:
+	@cat ${MAKEFILE_LIST} | grep -oE '^[0-9a-zA-Z_-]+:' | sed 's/://' | sort
+
 test: \
 	test-my-srfi-internals \
 	test-srfi-1 \
