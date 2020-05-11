@@ -1,4 +1,6 @@
 
+.DEFAULT_GOAL := help
+
 GOSH = gosh -I ./src/main -I ./src/test
 TEST_DIR = ./src/test
 
