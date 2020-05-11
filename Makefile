@@ -1,12 +1,21 @@
 
 .DEFAULT_GOAL := help
 
-GOSH = gosh -I ./src/main -I ./src/test
+# テストコードのルートディレクトリ.
 TEST_DIR = ./src/test
 
+# gosh コマンド (デフォルトパラメータを含む).
+GOSH = gosh -I ./src/main -I ./src/test
+
+#
+# ルール一覧を表示する.
+#
 help:
 	@cat ${MAKEFILE_LIST} | grep -oE '^[0-9a-zA-Z_-]+:' | sed 's/://' | sort
 
+#
+# 全てのテストを実行する.
+#
 test: \
 	test-my-srfi-internals \
 	test-srfi-1 \
