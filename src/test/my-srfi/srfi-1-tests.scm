@@ -913,22 +913,22 @@
             (take! '() 1))
         (test* "take! when non empty list passed #1"
             (test-error <error>)
-            (take! '(1 2 3) -1))
+            (take! (list 1 2 3) -1))
         (test* "take! when non empty list passed #2"
             '()
-            (take! '(1 2 3) 0))
+            (take! (list 1 2 3) 0))
         (test* "take! when non empty list passed #3"
             '(1)
-            (take! '(1 2 3) 1))
+            (take! (list 1 2 3) 1))
         (test* "take! when non empty list passed #4"
             '(1 2)
-            (take! '(1 2 3) 2))
+            (take! (list 1 2 3) 2))
         (test* "take! when non empty list passed #5"
             '(1 2 3)
-            (take! '(1 2 3) 3))
+            (take! (list 1 2 3) 3))
         (test* "take! when non empty list passed #6"
             (test-error <error>)
-            (take! '(1 2 3) 4))
+            (take! (list 1 2 3) 4))
         (test-end)))
 
 (define test-split-at
@@ -1194,16 +1194,16 @@
             (filter! false '()))
         (test* "filter! when non empty list passed #1"
             '(1 2 3 4 5)
-            (filter! true '(1 2 3 4 5)))
+            (filter! true (list 1 2 3 4 5)))
         (test* "filter! when non empty list passed #2"
             '()
-            (filter! false '(1 2 3 4 5)))
+            (filter! false (list 1 2 3 4 5)))
         (test* "filter! when non empty list passed #3"
             '(1 3 5)
-            (filter! odd? '(1 2 3 4 5)))
+            (filter! odd? (list 1 2 3 4 5)))
         (test* "filter! when non empty list passed #4"
             '(2 4)
-            (filter! even? '(1 2 3 4 5)))
+            (filter! even? (list 1 2 3 4 5)))
         (test-end)))
 
 (define test-any
